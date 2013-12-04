@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.Contract", "Kobo.ContactManager.Contract\Kobo.ContactManager.Contract.csproj", "{523069AE-6926-414A-BB3E-E902CEA874B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.DAO", "Kobo.ContactManager.DAO\Kobo.ContactManager.DAO.csproj", "{BD5D328E-8CE8-4D8F-8D52-FF2B6138717D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.Service", "Kobo.ContactManager.Service\Kobo.ContactManager.Service.csproj", "{BECB591A-CC9E-4E48-9053-513EC4436B0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.UnitTest", "Kobo.ContactManager.UnitTest\Kobo.ContactManager.UnitTest.csproj", "{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +19,18 @@ Global
 		{523069AE-6926-414A-BB3E-E902CEA874B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{523069AE-6926-414A-BB3E-E902CEA874B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{523069AE-6926-414A-BB3E-E902CEA874B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD5D328E-8CE8-4D8F-8D52-FF2B6138717D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD5D328E-8CE8-4D8F-8D52-FF2B6138717D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD5D328E-8CE8-4D8F-8D52-FF2B6138717D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD5D328E-8CE8-4D8F-8D52-FF2B6138717D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BECB591A-CC9E-4E48-9053-513EC4436B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BECB591A-CC9E-4E48-9053-513EC4436B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BECB591A-CC9E-4E48-9053-513EC4436B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BECB591A-CC9E-4E48-9053-513EC4436B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
