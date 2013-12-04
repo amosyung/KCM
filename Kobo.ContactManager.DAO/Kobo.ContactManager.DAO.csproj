@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactManagerDataAccess.cs" />
+    <Compile Include="ContactDataAccess.cs" />
     <Compile Include="Model\ContactDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

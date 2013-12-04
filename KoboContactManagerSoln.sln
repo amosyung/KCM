@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.UnitTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.ServiceHost", "Kobo.ContactManager.ServiceHost\Kobo.ContactManager.ServiceHost.csproj", "{7E2717ED-1D4C-483F-92C6-FE24D3F0C646}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.Web", "Kobo.ContactManager.Web\Kobo.ContactManager.Web.csproj", "{9C98D934-4D9E-4357-B7A0-8D8DF9A09459}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7E2717ED-1D4C-483F-92C6-FE24D3F0C646} = {7E2717ED-1D4C-483F-92C6-FE24D3F0C646}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +42,10 @@ Global
 		{7E2717ED-1D4C-483F-92C6-FE24D3F0C646}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E2717ED-1D4C-483F-92C6-FE24D3F0C646}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E2717ED-1D4C-483F-92C6-FE24D3F0C646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C98D934-4D9E-4357-B7A0-8D8DF9A09459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C98D934-4D9E-4357-B7A0-8D8DF9A09459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C98D934-4D9E-4357-B7A0-8D8DF9A09459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C98D934-4D9E-4357-B7A0-8D8DF9A09459}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

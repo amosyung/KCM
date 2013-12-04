@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Contact List";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <div class="col-xs-12 searchBox">
+            <input id="searchBox" placeholder="enter any text to search" type="text" value="" />
+        </div>
+        <div class="col-xs-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Last name</th>
+                        <th>First name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Date of birth</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>            
+        </div>
+        <div class="row">
+            <div class ="col-xs-12" id="noDataMsg">No contact found</div>
+        </div>
+        <div class="col-xs-12 addNew">
+            <button class="btn" onclick="location.href='/home/addcontact'">Add contact</button>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(
+            function () {
+                $('#noDataMsg').hide();
+                $.get("/Home/GetContacts", function (data) {
+                    displayDataInGrid(data);
+                });
+                $('#searchBox').keyup(function (e) {
+                    if (e.keyCode == 13) {
+                        var searchText = $(this).val();
+                        $.get("/Home/SearchContacts?searchText=" + searchText, function (data) {
+                            displayDataInGrid(data);
+                        });
+                    }
+                });
+                
+            }
+        );
+
+
+
+        function displayDataInGrid(data) {
+            $('.table > tbody').html("");
+            if (data.length == 0) {
+                $('#noDataMsg').show();
+            }
+            else {
+                $('#noDataMsg').hide();
+                data.forEach(function (entry) {
+                    var phone = entry.Phone == undefined ? '' : entry.Phone;
+                    var dob = entry.BirthDay == undefined ? '' : new Date(formatJsonDate(entry.BirthDay));
+                    if (dob != '')
+                        dob = (dob.getMonth() + 1) + "/" + dob.getDate() + "/" + dob.getFullYear();
+                    var email = entry.Email == undefined ? '' : entry.Email;
+                    $('.table > tbody').append('<tr><td>' + entry.LastName + '</td><td>' + entry.FirstName + '</td><td>' + phone + '</td><td>' + email + '</td><td>' + dob + '</td><td><a href="/home/Edit?contactId=' + entry.Id + '">Edit</a></td></tr>');
+                });
+            }
+        }
+    </script>
+

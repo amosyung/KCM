@@ -1,0 +1,45 @@
+﻿@model Kobo.ContactManager.Web.Models.LogonModel
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Hello, world!</h1>
+            <p>Welcome to the world's most feature starved contact manager...</p>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">But before we can go any further, please enter your login information:</div>          
+        </div>
+        <div class="row">
+            <div class="col-xs-12 loginRow">@Html.TextBoxFor(m => m.UserId, new { @class = "login-field", @placeholder = "User Id" })</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 loginRow">@Html.PasswordFor(m => m.Password, new { @class = "login-field", @placeholder = "Password" })</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                
+                <div id = "alert_placeholder"></div>
+                <input type="submit" class="btn btn-primary btn-block" value="Login" />
+                
+            </div>
+        </div>
+    </div>
+    }
+
+
+    <script type="text/javascript" >
+        $(document).ready(
+            function () {
+                var errorMsg = '@Model.ErrorMessage';
+                if (errorMsg != null && errorMsg != '')
+                    $('#alert_placeholder').html('<div class="alert alert-danger">' + errorMsg + '</div>')
+            }
+        );
+    </script>
+

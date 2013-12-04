@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "EditCustomer";
+}
+
+<h2>EditCustomer</h2>
+@{
+    ViewBag.Title = "Edit Customer";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="col-xs-12 grid-center"><h1>Edit customer</h1></div>
+    <div class="row">
+        <div class="col-xs-12" id="errorPanel"></div>
+    </div>
+    <div class="col-xs-6 grid-flushRight">Last Name:</div>
+    <div class="col-xs-6"><input type="text" id="lastName" value="" /></div>
+    <div class="col-xs-6 grid-flushRight">First Name:</div>
+    <div class="col-xs-6"><input type="text" id="firstName" value="" /></div>
+    <div class="col-xs-6 grid-flushRight">Birth Day:</div>
+    <div class="col-xs-6"><input type="text" id="birthDate" value="" /></div>
+    <div class="col-xs-6 grid-flushRight">Email:</div>
+    <div class="col-xs-6"><input type="text" id="email" value="" /></div>
+    <div class="col-xs-6"><button class="btn" id="btnDelete">Delete</button></div>
+    <div class="col-xs-6 grid-flushRight">
+        <button class="btn" id="btnUpdate">Update</button>
+        <div id="successMsg"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var customer = null;
+    $(document).ready(
+        function () {
+            $.get("/Home/GetCustomer?id=" + @ViewData["id"], function (data) {
+                customer = data;
+                if (customer == null)
+                {
+                    alert("The contact you are trying to edit either does not exist or is not a customer");
+                    location.href("/home/index");
+                }
+                else
+                {
+                    $('#lastName').val(customer.LastName);
+                    $('#firstName').val(customer.FirstName);
+                    var dob = customer.BirthDay == undefined ? '' : new Date(formatJsonDate(customer.BirthDay));
+                    $('#birthDate').val(formatDateForOutput(dob));
+                    $('#email').val(customer.Email);
+                }                
+            });
+            $('#btnUpdate').click(function() {
+                $('#errorPanel').html("");
+                $('#successMsg').html("");
+                
+                customer.LastName = $('#lastName').val();
+                customer.FirstName = $('#firstName').val();
+                customer.BirthDay = $('#birthDate').val();
+                customer.Email = $('#email').val();
+                $.ajax({
+                    contentType: 'application/json, charset=utf-8',
+                    type: "POST",
+                    url: "/Home/UpdateCustomer",
+                    data: JSON.stringify(customer),
+                    success: function(result){parseSuccessResult(result);},
+                    error: function(result){report(result);},
+                    datatype:"json"
+                });
+
+
+            });
+            $('#btnDelete').click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/DeleteContact",
+                    data: "contactId="+ customer.Id,
+                    success: function(result){alert('Contact deleted.');location.href="/Home/Index";},
+                    error: function(result){report(result);},
+                    datatype:"json"
+                });
+            });
+        }
+    );
+
+    function parseSuccessResult(result)
+    {
+        if (!result.IsSuccess)
+        {
+            var errorMsg = "";
+            result.Errors.forEach(function(entry){errorMsg += "<li>" + entry + "</li>"});
+            $('#errorPanel').append("<ul>" + errorMsg + "</ul>");
+        }
+        else
+        {
+            $('#successMsg').html("Saved! <a href='/home/index'>back to home</a>");
+        }
+    }
+
+    function report(result)
+    {
+        alert("An error has occured");
+    }
+
+    function deleteCustomer()
+    {
+    }
+
+    function updateCustomer()
+    {
+        customer.LastName = $('#lastName').val();
+    }
+</script>

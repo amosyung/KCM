@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2cbdf1c6fed145ca9dd19db11b0528c9" Name="Diagram1">
-        <EntityTypeShape EntityType="ContactManagerModel.Customer" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ContactManagerModel.Person" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="ContactManagerModel.Supplier" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <AssociationConnector Association="ContactManagerModel.FK__Customer__Person__014935CB" ManuallyRouted="false" />
-        <AssociationConnector Association="ContactManagerModel.FK__Supplier__Person__023D5A04" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ContactManagerModel.Customer" Width="1.5" PointX="3.1083124182691391" PointY="14.765851221403969" />
+        <EntityTypeShape EntityType="ContactManagerModel.Person" Width="1.5" PointX="1.2515388043837337" PointY="20.660031551802547" />
+        <EntityTypeShape EntityType="ContactManagerModel.Supplier" Width="1.5" PointX="11.221374559784948" PointY="31.152721598349849" />
+        <AssociationConnector Association="ContactManagerModel.FK__Customer__Person__014935CB" />
+        <AssociationConnector Association="ContactManagerModel.FK__Supplier__Person__023D5A04" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

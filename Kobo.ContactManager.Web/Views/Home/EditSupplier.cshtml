@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "EditSupplier";
+}
+
+<h2>Edit Supplier</h2>
+@{
+    ViewBag.Title = "Edit Supplier";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="col-xs-12 grid-center"><h1>Edit supplier</h1></div>
+    <div class="row">
+        <div class="col-xs-12" id="errorPanel"></div>
+    </div>
+    <div class="col-xs-6 grid-flushRight">Last Name:</div>
+    <div class="col-xs-6"><input type="text" id="lastName" value="" /></div>
+    <div class="col-xs-6 grid-flushRight">First Name:</div>
+    <div class="col-xs-6"><input type="text" id="firstName" value="" /></div>
+    <div class="col-xs-6 grid-flushRight">Phone:</div>
+    <div class="col-xs-6"><input type="text" id="phone" value="" /></div>
+    <div class="col-xs-6"><button class="btn" id="btnDelete">Delete</button></div>
+    <div class="col-xs-6 grid-flushRight">
+        <button class="btn" id="btnUpdate">Update</button>
+        <div id="successMsg"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var supplier = null;
+    $(document).ready(
+        function () {
+            $.get("/Home/GetSupplier?id=" + @ViewData["id"], function (data) {
+                supplier = data;
+                if (supplier == null)
+                {
+                    alert("The contact you are trying to edit either does not exist or is not a supplier");
+                    location.href("/home/index");
+                }
+                else
+                {
+                    $('#lastName').val(supplier.LastName);
+                    $('#firstName').val(supplier.FirstName);
+                    var phone = supplier.Phone == undefined ? '' : supplier.Phone;
+                    $('#phone').val(phone);
+                }                
+            });
+            $('#btnUpdate').click(function() {
+                $('#errorPanel').html("");
+                $('#successMsg').html("");
+                
+                supplier.LastName = $('#lastName').val();
+                supplier.FirstName = $('#firstName').val();
+                supplier.Phone = $('#phone').val();
+
+                $.ajax({
+                    contentType: 'application/json, charset=utf-8',
+                    type: "POST",
+                    url: "/Home/UpdateSupplier",
+                    data: JSON.stringify(supplier),
+                    success: function(result){parseSuccessResult(result);},
+                    error: function(result){report(result);},
+                    datatype:"json"
+                });
+
+
+            });
+            $('#btnDelete').click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/DeleteContact",
+                    data: "contactId="+ supplier.Id,
+                    success: function(result){alert('Contact deleted.');location.href="/Home/Index";},
+                    error: function(result){report(result);},
+                    datatype:"json"
+                });
+            });
+        }
+    );
+
+    function parseSuccessResult(result)
+    {
+        if (!result.IsSuccess)
+        {
+            var errorMsg = "";
+            result.Errors.forEach(function(entry){errorMsg += "<li>" + entry + "</li>"});
+            $('#errorPanel').append("<ul>" + errorMsg + "</ul>");
+        }
+        else
+        {
+            $('#successMsg').html("Saved! <a href='/home/index'>back to home</a>");
+        }
+    }
+
+    function report(result)
+    {
+        alert("An error has occured");
+    }
+
+</script>
