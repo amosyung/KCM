@@ -1,0 +1,35 @@
+﻿<objects xmlns="http://www.springframework.net" xmlns:v="http://www.springframework.net/validation">
+  <v:group id="PersonValidator">
+    <v:required id="FirstNameValidator" test="FirstName">
+      <v:message id="FirstNameRequired" providers="contactValidation"/>
+    </v:required>
+    <v:condition id="FirstNameLengthValidator" test="FirstName.Length &lt;= 50" when="FirstName != null">
+      <v:message id="FirstNameLengthMismatch" providers="contactValidation"/>
+    </v:condition>
+    <v:required id="LastNameValidator" test="LastName">
+      <v:message id="LastNameRequired" providers="contactValidation"/>
+    </v:required>
+    <v:condition id="LastNameLengthValidator" test="LastName.Length &lt;= 50" when="LastName != null">
+      <v:message id="LastNameLengthMismatch" providers="contactValidation"/>
+    </v:condition>
+  </v:group>
+  <v:group id="SupplierValidator" >
+    <v:required id="PhoneNumberValidator" test="Phone">
+      <v:message id="PhoneNumberRequired" providers="contactValidation"/>
+    </v:required>
+    <v:regex id="PhoneNumberDigitsValidator" test="Phone" expression="^\d{1,45}$"  when="Phone != null">
+      <v:message id="PhoneNumberInvalid" providers="contactValidation"/>
+    </v:regex>
+    <v:condition id="PhoneNumberLengthValidator1" test="Phone.Length &gt;= 7" when="Phone != null">
+      <v:message id="PhoneNumberInvalid" providers="contactValidation"/>
+    </v:condition>
+    <v:condition id="PhoneNumberLengthValidator" test="Phone.Length &lt;= 12" when="Phone != null">
+      <v:message id="PhoneNumberInvalid" providers="contactValidation"/>
+    </v:condition>
+  </v:group>
+  <v:group id="CustomerValidator" >
+    <v:validator id="EmailFormatValidator" test="Email" type="Spring.Validation.Validators.EmailValidator, Spring.Core">
+      <v:message id="InvalidEmail" providers="contactValidation" />
+    </v:validator>
+  </v:group>
+</objects>
