@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.DAO", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.Service", "Kobo.ContactManager.Service\Kobo.ContactManager.Service.csproj", "{BECB591A-CC9E-4E48-9053-513EC4436B0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.UnitTest", "Kobo.ContactManager.UnitTest\Kobo.ContactManager.UnitTest.csproj", "{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.ServiceHost", "Kobo.ContactManager.ServiceHost\Kobo.ContactManager.ServiceHost.csproj", "{7E2717ED-1D4C-483F-92C6-FE24D3F0C646}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobo.ContactManager.Web", "Kobo.ContactManager.Web\Kobo.ContactManager.Web.csproj", "{9C98D934-4D9E-4357-B7A0-8D8DF9A09459}"
@@ -36,10 +34,6 @@ Global
 		{BECB591A-CC9E-4E48-9053-513EC4436B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BECB591A-CC9E-4E48-9053-513EC4436B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BECB591A-CC9E-4E48-9053-513EC4436B0E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6ADD841B-4AAA-4776-8CE0-3BED08FA01C6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E2717ED-1D4C-483F-92C6-FE24D3F0C646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E2717ED-1D4C-483F-92C6-FE24D3F0C646}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E2717ED-1D4C-483F-92C6-FE24D3F0C646}.Release|Any CPU.ActiveCfg = Release|Any CPU
